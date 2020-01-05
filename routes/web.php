@@ -25,15 +25,25 @@ php artisan optimize
 Route::get('/', function () {
     // $user = App\User::findOrFail(1);
     // return $user->roles;
+
     // $role = App\Role::findOrFail(1);
     // return $role->users;
-   // $user = App\User::findOrFail(1);
-    //return $user->roles()->attach(1); //agregar un rol a un usuario
-    //return $user->roles()->detach(1); // eliminar un rol a un usuario
-   // return $user->roles()->sync(2);
+    
+    /* $user = App\User::findOrFail(1);
+       return $user->roles()->attach(1);  agregar un rol a un usuario
+       return $user->roles()->detach(1);  eliminar un rol a un usuario
+       return $user->roles()->sync(2);  */
+
     //return $user->roles;
-   // $user = App\User::findOrFail(1);
+   // $user = App\User::findOrFail(1); //Buscar los post de un usuario
    // return $user->posts;
-   $post = App\Post::findOrFail(3);
-   return $post->user;
+
+
+   //Agregando datos desde una consulta relacionada de un usuario a un post
+   $user = App\User::findOrFail(1);
+   return $user->posts()->create([
+       "name"        =>   "Un post creado desde el archivo web.php",
+       "author"      =>   "Joaquin",
+       "description" =>   "Este es un post creado de prueba"
+   ]);
 });
