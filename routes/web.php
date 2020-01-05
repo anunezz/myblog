@@ -11,6 +11,17 @@
 |
 */
 
+/* =========================================================================================
+            COMANDOS PARA CUANDO SE INICIA LA CONFIGURACION DE LA BASE DE DATOS
+php artisan config:clear
+php artisan cache:clear
+php artisan route:clear
+php artisan view:clear
+php artisan optimize
+========================================================================================== */
+
+
+
 Route::get('/', function () {
     // $user = App\User::findOrFail(1);
     // return $user->roles;
