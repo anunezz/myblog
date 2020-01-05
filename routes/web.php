@@ -12,5 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // $user = App\User::findOrFail(1);
+    // return $user->roles;
+    // $role = App\Role::findOrFail(1);
+    // return $role->users;
+   // $user = App\User::findOrFail(1);
+    //return $user->roles()->attach(1); //agregar un rol a un usuario
+    //return $user->roles()->detach(1); // eliminar un rol a un usuario
+   // return $user->roles()->sync(2);
+    //return $user->roles;
+   // $user = App\User::findOrFail(1);
+   // return $user->posts;
+   $post = App\Post::findOrFail(3);
+   return $post->user;
 });

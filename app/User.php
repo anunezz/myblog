@@ -2,10 +2,14 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Model;
+
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-
+use App\Role;
+use App\Post;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,4 +40,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+     public function roles(){
+        return $this->belongsToMany(Role::class);
+     }
+
+     public function posts(){
+       // return $this->hasOne(Post::class); //Un usuario solo debe estar asociado a un post
+        return $this->hasMany(Post::class);  //Un usuario esta asociado a varios post
+     }
+
+
 }
