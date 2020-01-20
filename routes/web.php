@@ -20,9 +20,14 @@ php artisan view:clear
 php artisan optimize
 ========================================================================================== */
 
-
-
 Route::get('/', function () {
+    return view('app');
+});
+
+Route::get('/api/getusers', 'UserController@getUser');
+
+
+Route::get('/hhh', function () {
     // $user = App\User::findOrFail(1);
     // return $user->roles;
 
@@ -41,9 +46,14 @@ Route::get('/', function () {
 
    //Agregando datos desde una consulta relacionada de un usuario a un post
    $user = App\User::findOrFail(1);
+   
+  // dd($user);
    return $user->posts()->create([
        "name"        =>   "Un post creado desde el archivo web.php",
        "author"      =>   "Joaquin",
        "description" =>   "Este es un post creado de prueba"
    ]);
+
+    
+
 });
